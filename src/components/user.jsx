@@ -18,4 +18,4 @@ const User = ({user, onDelete}) => {
   )
 }
 
-export default User;
+export default User
