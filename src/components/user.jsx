@@ -1,19 +1,23 @@
 import Qualities from "./qualitie";
+import BookMark from "../components/bookMark";
 
-const User = ({user, onDelete}) => {
-
-  const handleDelete = (id) => {
-    onDelete(id);
-  }
-
+const User = ({_id, name, qualities, onDelete, profession,completedMeetings, bookmark, onToggleBookmar, rate }) => {
   return (
-    <tr key={user._id}>
-      <td>{user.name}</td>
-      <td>{user.qualities.map((quality => <Qualities key={quality._id} color={quality.color} name={quality.name} /> ))}</td>
-      <td>{user.profession.name}</td>
-      <td>{user.completedMeetings}</td>
-      <td>{user.rate} /5</td>
-      <td><button className='btn btn-danger' onClick={() => handleDelete(user._id)}>delete</button></td>
+    <tr key={_id}>
+      <td>{name}</td>
+      <td>{qualities.map((quality => 
+            <Qualities 
+              key={quality._id} 
+              color={quality.color} 
+              name={quality.name} /> ))}</td>
+      <td>{profession.name}</td>
+      <td>{completedMeetings}</td>
+      <td>{rate} /5</td>
+      <td>
+        <BookMark 
+            status = {bookmark} 
+            onToggleBookmar={onToggleBookmar} /></td>
+      <td><button className='btn btn-danger' onClick={() => onDelete(_id)}>delete</button></td>
     </tr>
   )
 }
